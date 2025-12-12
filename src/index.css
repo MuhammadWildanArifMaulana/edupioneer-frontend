@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-inter;
+  }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.18s ease-out;
+}
+
+/* GLOBAL DROPDOWN STYLE */
+.dropdown-btn {
+  @apply w-full bg-white rounded-[10px] shadow-md flex items-center justify-between
+         px-4 text-sm sm:text-base text-black hover:bg-[#E9F1FA] transition;
+}
+
+.dropdown-menu {
+  @apply absolute w-full bg-white rounded-[10px] shadow-md z-20 overflow-hidden;
+}
+
+.dropdown-item {
+  @apply w-full text-left px-4 py-2 text-sm sm:text-base hover:bg-[#E9F1FA] transition;
+}
+
+.dropdown-icon {
+  @apply w-4 h-4 transition-transform duration-200;
+}
+
+/*Panel list*/
+.list-panel-btn {
+  @apply w-full h-14 sm:h-16 bg-white rounded-[10px] shadow-md
+    flex items-center justify-between px-4 sm:px-6
+    hover:bg-[#E9F1FA] transition;
+}
+
+.list-panel-title {
+  @apply text-sm sm:text-base font-bold text-black;
+}
+
+.list-panel-icon {
+  @apply w-4 h-4 transition-transform duration-200;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+
