@@ -3,7 +3,18 @@ import axios from "axios";
 // NOTE: during local debugging we may override backend port if needed
 // Vite exposes env vars via `import.meta.env`. Use `VITE_API_BASE_URL` if set.
 // Default to port 5000 to match local backend preference.
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+// Prefer Vite env var `VITE_API_BASE_URL`, fall back to `REACT_APP_API_URL` for local compat.
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || process.env.REACT_APP_API_URL;
+
+if (!API_BASE_URL) {
+  // Helpful debug message during development/build when env var is missing
+  // Vite expects env vars prefixed with VITE_, so set `VITE_API_BASE_URL` in deployment.
+  // eslint-disable-next-line no-console
+  console.error(
+    "API base URL not set. Please set VITE_API_BASE_URL in your environment (Vercel Environment Variables)."
+  );
+}
 
 const api = axios.create({
   baseURL: API_BASE_URL,

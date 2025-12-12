@@ -22,7 +22,8 @@ export default function MateriTerbaru({ items = [] }) {
     const s = String(url);
     if (/^https?:\/\//i.test(s)) return s;
     // If server returns relative path like '/uploads/..', try to prefix API host (without /api)
-    const apiBase = process.env.REACT_APP_API_URL;
+    const apiBase =
+      import.meta.env.VITE_API_BASE_URL || process.env.REACT_APP_API_URL;
     const host = apiBase ? apiBase.replace(/\/api\/?$/, "") : "";
     if (s.startsWith("/")) return host ? host + s : s;
     return host ? host + "/" + s : s;
